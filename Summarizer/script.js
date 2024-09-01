@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const textBox = document.querySelector('.textbox'); // The input textbox
+    const textBox = document.querySelector('.textbox');
     const classifyButton = document.querySelector('.button-container .button');
-    const resultTextBox = document.querySelectorAll('.textbox')[1]; // The second textbox for displaying results
+    const resultTextBox = document.querySelectorAll('.textbox')[1];
 
     classifyButton.addEventListener('click', function () {
         const textData = textBox.value;
@@ -23,12 +23,9 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(result => {
             console.log('Success:', result);
 
-            // Format the output to be displayed in the second textbox
             const formattedResult = `
-                Summary: ${result.result.Summary}\nAllegedParty: ${result.result.AllegedParty}\nAccusation: ${result.result.Accusation}\nLocation: ${result.result.Location}\nAmount: ${result.result.Amount}
-            `;
+                Summary: ${result.result.Summary}\nAllegedParty: ${result.result.AllegedParty}\nAccusation: ${result.result.Accusation}\nLocation: ${result.result.Location}\nAmount: ${result.result.Amount}`;
 
-            // Set the formatted result into the second textbox
             resultTextBox.value = formattedResult.trim();
         })
         .catch(error => {
