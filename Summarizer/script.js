@@ -23,8 +23,23 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(result => {
             console.log('Success:', result);
 
-            const formattedResult = `
-                Summary: ${result.result.Summary}\nAllegedParty: ${result.result.AllegedParty}\nAccusation: ${result.result.Accusation}\nLocation: ${result.result.Location}\nAmount: ${result.result.Amount}`;
+            let formattedResult = '';
+
+            if (result.result.Summary) {
+                formattedResult += `สรุปข้อกล่าวหา: ${result.result.Summary}\n`;
+            }
+            if (result.result.AllegedParty) {
+                formattedResult += `ผู้ถูกกล่าวหา: ${result.result.AllegedParty}\n`;
+            }
+            if (result.result.Accusation) {
+                formattedResult += `เรื่องที่กล่าวหา: ${result.result.Accusation}\n`;
+            }
+            if (result.result.Location) {
+                formattedResult += `สถานที่: ${result.result.Location}\n`;
+            }
+            if (result.result.Amount) {
+                formattedResult += `มูลค่าความเสียหาย: ${result.result.Amount}`;
+            }
 
             resultTextBox.value = formattedResult.trim();
         })
